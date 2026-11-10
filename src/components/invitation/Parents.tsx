@@ -13,7 +13,7 @@ export default function Parents({ config }: { config: WeddingConfig }) {
   ].filter((s) => s.names.length)
 
   return (
-    <section className="section section--cream" id="padres">
+    <section className="section" id="padres">
       <div className="section-inner section-inner--parents">
         <p className="section-phrase">{config.parents_phrase}</p>
         <Ornament />

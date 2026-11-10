@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import type { WeddingConfig } from '@/types'
-import Ornament from '@/components/ui/Ornament'
 import Lightbox from './Lightbox'
 
 export default function DressCode({ config }: { config: WeddingConfig }) {
@@ -9,12 +8,11 @@ export default function DressCode({ config }: { config: WeddingConfig }) {
   if (!config.dress_code_title && !config.dress_code_text && !photos.length) return null
 
   return (
-    <section className="section section--sand" id="etiqueta">
+    <section className="section" id="etiqueta">
       <div className="section-inner section-inner--wide">
         <div>
           <p className="eyebrow">Código de vestimenta</p>
           <h2 className="section-title">{config.dress_code_title || 'Etiqueta'}</h2>
-          <Ornament />
           {config.dress_code_text && <p className="section-text">{config.dress_code_text}</p>}
         </div>
         {photos.length > 0 && (
