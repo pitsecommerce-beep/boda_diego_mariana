@@ -490,8 +490,8 @@
 .venue-name:empty::before { display: none; }
 
 /* ── Etiqueta ── */
-.dress-grid { display: grid; gap: 14px; margin: 40px auto 0; grid-template-columns: repeat(2, 1fr); max-width: 900px; }
-.dress-grid--1 { grid-template-columns: minmax(0, 360px); justify-content: center; }
+.dress-grid { display: grid; gap: 14px; margin: 40px auto 0; grid-template-columns: repeat(2, 1fr); max-width: 900px; align-items: start; }
+.dress-grid--1 { grid-template-columns: minmax(0, 560px); justify-content: center; }
 @media (min-width: 760px) {
   .dress-grid--3 { grid-template-columns: repeat(3, 1fr); }
   .dress-grid--4 { grid-template-columns: repeat(4, 1fr); }
@@ -500,8 +500,9 @@
 @media (max-width: 759px) {
   .dress-grid > :last-child:nth-child(odd):not(:first-child) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px); }
 }
-.arch-frame { margin: 0; aspect-ratio: 3 / 4.3; border-radius: 999px 999px 4px 4px; overflow: hidden; background: var(--stone); }
-.arch-frame img { width: 100%; height: 100%; object-fit: cover; }
+/* Foto completa, sin recortes, en su proporción original */
+.arch-frame { margin: 0; border-radius: 2px; overflow: hidden; box-shadow: 0 10px 24px -18px rgba(77, 68, 60, 0.45); }
+.arch-frame img { width: 100%; height: auto; }
 
 /* ── Carrusel ── */
 .gallery-head { padding: 0 16px; }
@@ -627,3 +628,31 @@
 .hero .hero-date { font-size: var(--fs-title); }
 .pill { font-size: var(--fs-label); }
 @media (min-width: 900px) { .parents-name { font-size: var(--fs-lead); } }
+
+/* ── Foto ampliada ── */
+.arch-frame img { cursor: zoom-in; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: max(16px, 4vh) 16px;
+  cursor: zoom-out;
+}
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 33, 26, 0.72);
+  backdrop-filter: blur(4px);
+}
+.lightbox-img {
+  position: relative;
+  max-width: min(94vw, 1100px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+}
