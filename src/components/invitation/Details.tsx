@@ -1,5 +1,4 @@
 import type { WeddingConfig } from '@/types'
-import { formatLongDate } from '@/lib/time'
 
 const ChurchIcon = () => (
   <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.1" strokeLinejoin="round" aria-hidden="true">
@@ -32,7 +31,7 @@ interface Place {
 
 export default function Details({ config }: { config: WeddingConfig }) {
   const places: Place[] = [
-    { title: 'Ceremonia religiosa', icon: <ChurchIcon />, name: config.ceremony_name, time: config.ceremony_time, address: config.ceremony_address, maps: config.ceremony_maps_url },
+    { title: 'Ceremonia', icon: <ChurchIcon />, name: config.ceremony_name, time: config.ceremony_time, address: config.ceremony_address, maps: config.ceremony_maps_url },
     { title: 'Recepción', icon: <HaciendaIcon />, name: config.reception_name, time: config.reception_time, address: config.reception_address, maps: config.reception_maps_url },
   ].filter((p) => p.name || p.address)
 
@@ -41,22 +40,18 @@ export default function Details({ config }: { config: WeddingConfig }) {
   return (
     <section className="section section--paper" id="detalles">
       <div className="section-inner section-inner--wide">
-        <div className="reveal">
-          <p className="eyebrow">El gran día</p>
-          <h2 className="section-title">Detalles</h2>
-          {config.wedding_date && <p className="section-sub">{formatLongDate(config.wedding_date)}</p>}
-        </div>
-        <div className="places">
+        <h2 className="section-title reveal">Cuándo y dónde</h2>
+        <div className={`venues ${places.length === 2 ? 'venues--two' : ''}`}>
           {places.map((p) => (
-            <article className="place reveal" key={p.title}>
-              <div className="place-icon">{p.icon}</div>
-              <p className="eyebrow">{p.title}</p>
-              {p.name && <h3 className="place-name">{p.name}</h3>}
-              {p.time && <p className="place-time">{p.time}</p>}
-              {p.address && <p className="place-address">{p.address}</p>}
+            <article className="venue reveal" key={p.title}>
+              <div className="venue-medal">{p.icon}</div>
+              <h3 className="venue-title">{p.title}</h3>
+              {p.time && <p className="venue-time">{p.time}</p>}
+              {p.name && <p className="venue-name">{p.name}</p>}
+              {p.address && <p className="venue-address">{p.address}</p>}
               {p.maps && (
-                <a className="pill pill--auto place-btn" href={p.maps} target="_blank" rel="noreferrer">
-                  Ver ubicación
+                <a className="pill pill--auto venue-btn" href={p.maps} target="_blank" rel="noreferrer">
+                  Cómo llegar
                 </a>
               )}
             </article>

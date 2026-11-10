@@ -10,7 +10,7 @@ export default function Gallery({ photos }: { photos: string[] }) {
 
   useEffect(() => {
     if (paused || count < 2) return
-    const id = setTimeout(() => go(index + 1), 5000)
+    const id = setTimeout(() => go(index + 1), 3000)
     return () => clearTimeout(id)
   }, [index, paused, count, go])
 

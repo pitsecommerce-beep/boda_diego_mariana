@@ -6,7 +6,7 @@ import { useReveal } from '@/hooks/useReveal'
 import { getPublicGuest } from '@/lib/supabase'
 import type { PublicGuest } from '@/types'
 import Loading from '@/components/ui/Loading'
-import Welcome from '@/components/invitation/Welcome'
+import Envelope from '@/components/invitation/Envelope'
 import MusicPlayer from '@/components/invitation/MusicPlayer'
 import Hero from '@/components/invitation/Hero'
 import Countdown from '@/components/invitation/Countdown'
@@ -46,18 +46,19 @@ export default function InvitationPage() {
   const open = () => {
     setPhase('opening')
     window.scrollTo(0, 0)
-    setTimeout(() => setPhase('open'), 900)
+    setTimeout(() => setPhase('open'), 3100)
   }
 
   return (
     <div className={`invitation ${phase === 'closed' ? 'is-locked' : ''}`}>
       <MusicPlayer src={config.music_url} start={phase !== 'closed'} />
       {phase !== 'open' && (
-        <Welcome
+        <Envelope
           bride={config.bride_name}
           groom={config.groom_name}
+          date={config.wedding_date}
           guestName={guest?.name}
-          closing={phase === 'opening'}
+          opening={phase === 'opening'}
           onOpen={open}
         />
       )}
