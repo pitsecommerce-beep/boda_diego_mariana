@@ -158,7 +158,7 @@ export default function GuestsPage() {
                   />
                 </th>
                 <th>Nombre</th><th>Celular</th><th>Pases</th><th>De</th><th>Grupo</th>
-                <th>Respuesta</th><th>Asisten</th><th>Enviada</th><th>Notas</th><th>Mensaje</th><th>Enlace</th>
+                <th>Respuesta</th><th>Asisten</th><th>Enviada</th><th>Notas</th><th>Enlace</th>
               </tr>
             </thead>
             <tbody>

@@ -11,8 +11,8 @@ const OPTIONS: { value: Answer; label: string }[] = [
 ]
 
 const THANKS: Record<Answer, string> = {
-  si: '¡Gracias! Nos hace muy felices que nos acompañes.',
-  no: 'Gracias por avisarnos. Te tendremos presente ese día.',
+  si: '¡Gracias! Te esperamos.',
+  no: 'Gracias por avisarnos.',
 }
 
 interface Props {
@@ -25,18 +25,17 @@ export default function Rsvp({ config, guest, slug }: Props) {
   const initial: Answer | null = guest?.rsvp_status === 'si' || guest?.rsvp_status === 'no' ? guest.rsvp_status : null
   const [choice, setChoice] = useState<Answer | null>(initial)
   const [count, setCount] = useState(guest?.attending_count || guest?.seats || 1)
-  const [message, setMessage] = useState(guest?.rsvp_message ?? '')
   const [saved, setSaved] = useState<Answer | null>(initial)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const send = async () => {
-    if (!slug || !choice) return
+  const send = async (answer: Answer, people = count) => {
+    if (!slug) return
     setSending(true)
     setError(null)
     try {
-      await submitRsvp(slug, choice, count, message)
-      setSaved(choice)
+      await submitRsvp(slug, answer, people, '')
+      setSaved(answer)
     } catch {
       setError('No pudimos guardar tu respuesta. Inténtalo de nuevo, por favor.')
     } finally {
@@ -74,7 +73,13 @@ export default function Rsvp({ config, guest, slug }: Props) {
                   type="button"
                   key={o.value}
                   className={`pill ${choice === o.value ? 'pill--solid' : ''}`}
-                  onClick={() => { setChoice(o.value); setSaved(null) }}
+                  onClick={() => {
+                    setChoice(o.value)
+                    if (o.value === saved) return
+                    setSaved(null)
+                    if (o.value === 'no' || guest.seats === 1) void send(o.value, 1)
+                  }}
+                  disabled={sending}
                   aria-pressed={choice === o.value}
                 >
                   {o.label}
@@ -82,29 +87,28 @@ export default function Rsvp({ config, guest, slug }: Props) {
               ))}
             </div>
 
-            {choice && saved !== choice && (
+            {choice === 'si' && saved !== 'si' && guest.seats > 1 && (
               <div className="rsvp-extra">
-                {choice === 'si' && guest.seats > 1 && (
-                  <label className="rsvp-field">
-                    <span>¿Cuántas personas asistirán?</span>
-                    <select value={count} onChange={(e) => setCount(Number(e.target.value))}>
-                      {Array.from({ length: guest.seats }, (_, i) => i + 1).map((n) => (
-                        <option key={n} value={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>
-                      ))}
-                    </select>
-                  </label>
-                )}
                 <label className="rsvp-field">
-                  <span>Un mensaje para los novios (opcional)</span>
-                  <textarea rows={3} value={message} onChange={(e) => setMessage(e.target.value)} maxLength={500} />
+                  <span>¿Cuántas personas asistirán?</span>
+                  <select value={count} onChange={(e) => setCount(Number(e.target.value))}>
+                    {Array.from({ length: guest.seats }, (_, i) => i + 1).map((n) => (
+                      <option key={n} value={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>
+                    ))}
+                  </select>
                 </label>
-                <button type="button" className="pill pill--solid" disabled={sending} onClick={() => void send()}>
-                  {sending ? 'Enviando…' : 'Enviar respuesta'}
+                <button type="button" className="pill pill--solid" disabled={sending} onClick={() => void send('si')}>
+                  {sending ? 'Enviando…' : 'Confirmar asistencia'}
                 </button>
               </div>
             )}
 
-            {saved && saved === choice && <p className="rsvp-thanks">{THANKS[saved]}</p>}
+            {saved && saved === choice && (
+              <div className="rsvp-thanks">
+                <p>{THANKS[saved]}</p>
+                <p className="rsvp-sign">{config.groom_name} &amp; {config.bride_name}</p>
+              </div>
+            )}
             {error && <p className="rsvp-error">{error}</p>}
           </div>
         )}
