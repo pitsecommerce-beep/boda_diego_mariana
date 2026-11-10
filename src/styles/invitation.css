@@ -312,6 +312,7 @@
   letter-spacing: 0.16em;
   font-variant-numeric: lining-nums;
 }
+.hero .hero-date { margin-top: clamp(40px, 7vh, 72px); }
 .hero-scroll {
   position: absolute;
   bottom: max(26px, env(safe-area-inset-bottom));
