@@ -37,3 +37,10 @@ export function formatTime(iso: string): string {
     timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true,
   }).format(new Date(iso))
 }
+
+/** "17 de abril de 2027" */
+export function formatPrettyDate(iso: string): string {
+  return new Intl.DateTimeFormat('es-MX', {
+    timeZone: TZ, day: 'numeric', month: 'long', year: 'numeric',
+  }).format(new Date(iso))
+}

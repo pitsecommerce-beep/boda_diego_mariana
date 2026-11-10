@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import type { PublicGuest, WeddingConfig } from '@/types'
 import { submitRsvp } from '@/lib/supabase'
-import Ornament from '@/components/ui/Ornament'
 
 type Answer = 'si' | 'no'
 
@@ -11,8 +10,8 @@ const OPTIONS: { value: Answer; label: string }[] = [
 ]
 
 const THANKS: Record<Answer, string> = {
-  si: '¡Gracias! Te esperamos.',
-  no: 'Gracias por avisarnos.',
+  si: 'Qué alegría. Te esperamos con mucho cariño.',
+  no: 'Gracias por avisarnos. Te vamos a extrañar.',
 }
 
 interface Props {
@@ -44,14 +43,12 @@ export default function Rsvp({ config, guest, slug }: Props) {
   }
 
   return (
-    <section className="section section--cream" id="confirmacion">
+    <section className="section" id="confirmacion">
       <div className="section-inner">
-        <p className="eyebrow">Confirma tu asistencia</p>
         <h2 className="section-title">¿Nos acompañas?</h2>
-        <Ornament />
         {config.rsvp_message && <p className="section-text">{config.rsvp_message}</p>}
         {config.rsvp_deadline && (
-          <p className="rsvp-deadline">Agradecemos tu respuesta antes del {config.rsvp_deadline}</p>
+          <p className="rsvp-deadline">Nos ayudas mucho si nos confirmas antes del {config.rsvp_deadline}</p>
         )}
 
         {!guest ? (
@@ -64,7 +61,7 @@ export default function Rsvp({ config, guest, slug }: Props) {
           <div className="rsvp-card">
             <p className="rsvp-guest">{guest.name}</p>
             <p className="rsvp-seats">
-              Hemos reservado <strong>{guest.seats}</strong> {guest.seats === 1 ? 'lugar' : 'lugares'} en tu honor
+              Apartamos <strong>{guest.seats}</strong> {guest.seats === 1 ? 'lugar' : 'lugares'} para ti
             </p>
 
             <div className="rsvp-options">
@@ -106,7 +103,7 @@ export default function Rsvp({ config, guest, slug }: Props) {
             {saved && saved === choice && (
               <div className="rsvp-thanks">
                 <p>{THANKS[saved]}</p>
-                <p className="rsvp-sign">{config.groom_name} &amp; {config.bride_name}</p>
+                <p className="rsvp-sign">{config.groom_name} y {config.bride_name}</p>
               </div>
             )}
             {error && <p className="rsvp-error">{error}</p>}

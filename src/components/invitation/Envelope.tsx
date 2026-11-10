@@ -32,14 +32,14 @@ export default function Envelope({ bride, groom, date, guestName, opening, onOpe
   const mono = `${initial(groom)}&${initial(bride)}`
   return (
     <div className={`env-scene ${opening ? 'is-opening' : ''}`}>
-      <p className="env-top eyebrow">{guestName ? 'Tienes una invitación' : 'Nuestra boda'}</p>
+      <p className="env-top">{guestName ? 'Tenemos algo que contarte' : 'Nuestra boda'}</p>
 
       <button type="button" className="env" onClick={onOpen} disabled={opening} aria-label="Abrir el sobre de la invitación">
         <span className="env-shadow" />
         <span className="env-back" />
 
         <span className="env-letter">
-          <span className="eyebrow">Nos casamos</span>
+          <span className="env-letter-top">Nos casamos</span>
           <span className="env-letter-names">
             {groom} <span className="amp">&amp;</span> {bride}
           </span>

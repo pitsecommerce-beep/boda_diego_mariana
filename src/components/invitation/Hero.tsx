@@ -1,5 +1,5 @@
 import type { WeddingConfig } from '@/types'
-import { formatShortDate } from '@/lib/time'
+import { formatPrettyDate } from '@/lib/time'
 
 export default function Hero({ config }: { config: WeddingConfig }) {
   return (
@@ -11,13 +11,13 @@ export default function Hero({ config }: { config: WeddingConfig }) {
       )}
       <div className="hero-shade" />
       <div className="hero-content">
-        <p className="eyebrow eyebrow--light">{config.hero_phrase || 'Nos casamos'}</p>
+        <p className="hero-phrase">{config.hero_phrase || 'Nos casamos'}</p>
         <h1 className="hero-names">
-          {config.groom_name}
+          <span>{config.groom_name}</span>
           <span className="amp">&amp;</span>
-          {config.bride_name}
+          <span>{config.bride_name}</span>
         </h1>
-        {config.wedding_date && <p className="hero-date">{formatShortDate(config.wedding_date)}</p>}
+        {config.wedding_date && <p className="hero-date">{formatPrettyDate(config.wedding_date)}</p>}
       </div>
       <a href="#cuenta" className="hero-scroll" aria-label="Seguir bajando">
         <span />

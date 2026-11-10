@@ -10,17 +10,16 @@ export default function Gallery({ photos }: { photos: string[] }) {
 
   useEffect(() => {
     if (paused || count < 2) return
-    const id = setTimeout(() => go(index + 1), 3000)
+    const id = setTimeout(() => go(index + 1), 5500)
     return () => clearTimeout(id)
   }, [index, paused, count, go])
 
   if (!count) return null
 
   return (
-    <section className="section section--paper section--flush" id="galeria">
+    <section className="section section--flush" id="galeria">
       <div className="gallery-head">
-        <p className="eyebrow">Nuestra historia</p>
-        <h2 className="section-title">Momentos</h2>
+        <h2 className="section-title">Un poco de nosotros</h2>
       </div>
       <div
         className="carousel"

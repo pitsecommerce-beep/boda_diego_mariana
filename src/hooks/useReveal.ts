@@ -3,9 +3,9 @@ import { useEffect } from 'react'
 /** Elementos que se van desbloqueando conforme el invitado avanza. */
 const TARGETS = [
   '.section .eyebrow', '.section-title', '.section-text', '.section-phrase', '.section .ornament',
-  '.countdown-unit', '.countdown-date', '.countdown-time',
+  '.countdown', '.countdown-date', '.countdown-time',
   '.parents-col', '.venue', '.arch-frame', '.carousel', '.carousel-dots',
-  '.rsvp-deadline', '.rsvp-card', '.gift-icon', '.gift-links > *', '.gift-bank',
+  '.rsvp-deadline', '.rsvp-card', '.gift-links > *', '.gift-bank',
   '.farewell-content > *',
 ].join(', ')
 
