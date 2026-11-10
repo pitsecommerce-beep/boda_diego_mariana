@@ -1,5 +1,4 @@
 import type { WeddingConfig } from '@/types'
-import Ornament from '@/components/ui/Ornament'
 
 export default function Parents({ config }: { config: WeddingConfig }) {
   // Primero la mamá y después el papá
@@ -16,7 +15,6 @@ export default function Parents({ config }: { config: WeddingConfig }) {
     <section className="section" id="padres">
       <div className="section-inner section-inner--parents">
         <p className="section-phrase">{config.parents_phrase}</p>
-        <Ornament />
         <div className={`parents ${sides.length === 2 ? 'parents--two' : ''}`}>
           {sides.map((s) => (
             <div className="parents-col" key={s.label}>
