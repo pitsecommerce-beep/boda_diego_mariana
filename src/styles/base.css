@@ -1,10 +1,10 @@
 /* ── Paleta ex hacienda: cantera, adobe, olivo y oro viejo ── */
 :root {
   /* Paleta clara y sobria: marfil, arena, champaña y salvia pálida */
-  --paper: #fdfbf7;
-  --cream: #f8f4ed;
-  --sand: #f1ebe1;
-  --stone: #e6ddcf;
+  --paper: #f8f3e7;
+  --cream: #f4eddf;
+  --sand: #efe5d2;
+  --stone: #e5d7bd;
   --gold: #cdbb9f;
   --gold-deep: #a99677;
   --gold-line: rgba(205, 187, 159, 0.6);
@@ -22,6 +22,13 @@
   --paper-fibers: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06 0.16' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.3 0 0 0 0 0.24 0.12 0 0 0 -0.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --paper-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.3 0 0 0 0 0.24 0.14 0 0 0 -0.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --paper-texture: var(--paper-grain), var(--paper-fibers), var(--paper-mottle);
+
+  /* Escala tipográfica única: todo crece o se reduce con la pantalla */
+  --fs-label: clamp(0.68rem, 0.62rem + 0.3vw, 0.84rem);
+  --fs-body: clamp(1.15rem, 1.05rem + 0.45vw, 1.4rem);
+  --fs-lead: clamp(1.5rem, 1.3rem + 0.9vw, 2.05rem);
+  --fs-title: clamp(2.3rem, 1.9rem + 2vw, 3.4rem);
+  --fs-display: clamp(3rem, 2rem + 5vw, 6rem);
 
   --serif: 'Cormorant Garamond', Georgia, serif;
   --script: 'Pinyon Script', 'Cormorant Garamond', cursive;
