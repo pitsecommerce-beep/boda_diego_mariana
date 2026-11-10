@@ -2,10 +2,12 @@ import { useState } from 'react'
 import type { WeddingConfig } from '@/types'
 import Ornament from '@/components/ui/Ornament'
 
+const GIFT_DEFAULT = 'Tu presencia es el mejor regalo. Si quieres regalarnos algo más, aquí te dejamos algunas opciones.'
+
 export default function Gifts({ config }: { config: WeddingConfig }) {
   const [copied, setCopied] = useState(false)
   const registries = (config.gift_registries ?? []).filter((r) => r.name || r.url)
-  if (!config.gift_message && !registries.length && !config.bank_details && !config.bank_clabe) return null
+  if (!registries.length && !config.bank_details && !config.bank_clabe) return null
 
   const copy = async () => {
     if (!config.bank_clabe) return
@@ -27,7 +29,7 @@ export default function Gifts({ config }: { config: WeddingConfig }) {
         </div>
         <h2 className="section-title">Mesa de regalos</h2>
         <Ornament />
-        {config.gift_message && <p className="section-text">{config.gift_message}</p>}
+        <p className="section-text">{config.gift_message || GIFT_DEFAULT}</p>
 
         {registries.length > 0 && (
           <div className="gift-links">

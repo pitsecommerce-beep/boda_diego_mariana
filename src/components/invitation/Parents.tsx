@@ -2,8 +2,9 @@ import type { WeddingConfig } from '@/types'
 import Ornament from '@/components/ui/Ornament'
 
 export default function Parents({ config }: { config: WeddingConfig }) {
-  const groom = [config.groom_father, config.groom_mother].filter(Boolean) as string[]
-  const bride = [config.bride_father, config.bride_mother].filter(Boolean) as string[]
+  // Primero la mamá y después el papá
+  const groom = [config.groom_mother, config.groom_father].filter(Boolean) as string[]
+  const bride = [config.bride_mother, config.bride_father].filter(Boolean) as string[]
   if (!bride.length && !groom.length) return null
 
   const sides = [
@@ -20,10 +21,10 @@ export default function Parents({ config }: { config: WeddingConfig }) {
           {sides.map((s) => (
             <div className="parents-col" key={s.label}>
               <p className="eyebrow">{s.label}</p>
-              {/* Siempre dos renglones para que ambas columnas queden a la misma altura */}
-              {[0, 1].map((i) => (
-                <p className="parents-name" key={i}>{s.names[i] ?? ' '}</p>
-              ))}
+              {/* Siempre los mismos renglones para que ambas columnas queden a la misma altura */}
+              <p className="parents-name">{s.names[0]}</p>
+              <p className="parents-and">{s.names.length > 1 ? 'y' : '\u00a0'}</p>
+              <p className="parents-name">{s.names[1] ?? '\u00a0'}</p>
             </div>
           ))}
         </div>

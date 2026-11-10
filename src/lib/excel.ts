@@ -64,11 +64,10 @@ export function exportGuests(guests: Guest[], linkFor: (g: Guest) => string): vo
     invitacion_enviada: g.invitation_sent ? 'Sí' : 'No',
     respuesta: STATUS_LABEL[g.rsvp_status],
     asistentes: g.rsvp_status === 'si' ? g.attending_count : 0,
-    mensaje: g.rsvp_message ?? '',
     enlace: linkFor(g),
   }))
   const ws = XLSX.utils.json_to_sheet(rows)
-  ws['!cols'] = [{ wch: 30 }, { wch: 14 }, { wch: 8 }, { wch: 12 }, { wch: 16 }, { wch: 24 }, { wch: 10 }, { wch: 16 }, { wch: 10 }, { wch: 30 }, { wch: 50 }]
+  ws['!cols'] = [{ wch: 30 }, { wch: 14 }, { wch: 8 }, { wch: 12 }, { wch: 16 }, { wch: 24 }, { wch: 10 }, { wch: 16 }, { wch: 10 }, { wch: 50 }]
   const wb = XLSX.utils.book_new()
   XLSX.utils.book_append_sheet(wb, ws, 'Invitados')
   XLSX.writeFile(wb, `invitados_${new Date().toISOString().slice(0, 10)}.xlsx`)

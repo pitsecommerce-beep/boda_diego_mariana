@@ -27,7 +27,7 @@ export const DEFAULT_CONFIG: WeddingConfig = {
   gallery_urls: [],
   rsvp_deadline: null,
   rsvp_message: null,
-  gift_message: null,
+  gift_message: 'Tu presencia es el mejor regalo. Si quieres regalarnos algo más, aquí te dejamos algunas opciones.',
   gift_registries: [],
   bank_details: null,
   bank_clabe: null,

@@ -77,7 +77,6 @@ export default function DashboardPage() {
               <li key={g.id}>
                 <div>
                   <strong>{g.name}</strong>
-                  {g.rsvp_message && <p className="recent-msg">“{g.rsvp_message}”</p>}
                 </div>
                 <span className={`badge badge--${g.rsvp_status}`}>
                   {STATUS_LABEL[g.rsvp_status]}{g.rsvp_status === 'si' ? ` · ${g.attending_count}` : ''}

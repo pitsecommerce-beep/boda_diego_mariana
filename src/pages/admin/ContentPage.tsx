@@ -108,10 +108,10 @@ export default function ContentPage() {
         <h2 className="card-title">3 · Nuestros papás</h2>
         {text('parents_phrase', 'Frase', { area: true })}
         <div className="grid-2">
-          {text('groom_father', 'Papá del novio')}
-          {text('bride_father', 'Papá de la novia')}
           {text('groom_mother', 'Mamá del novio')}
           {text('bride_mother', 'Mamá de la novia')}
+          {text('groom_father', 'Papá del novio')}
+          {text('bride_father', 'Papá de la novia')}
         </div>
       </section>
 
@@ -158,7 +158,7 @@ export default function ContentPage() {
 
       <section className="card">
         <h2 className="card-title">8 · Mesa de regalos</h2>
-        {text('gift_message', 'Mensaje', { area: true })}
+        {text('gift_message', 'Mensaje', { area: true, placeholder: 'Tu presencia es el mejor regalo. Si quieres regalarnos algo más, aquí te dejamos algunas opciones.', hint: 'Si lo dejas vacío se muestra este mismo texto.' })}
         <div className="field">
           <span>Mesas de regalos</span>
           {registries.map((r, i) => (

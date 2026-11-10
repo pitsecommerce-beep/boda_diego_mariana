@@ -79,7 +79,6 @@ export default function GuestRow({ guest: g, selected, onSelect, onUpdate, onDel
         <input type="checkbox" checked={g.invitation_sent} onChange={(e) => onUpdate({ invitation_sent: e.target.checked })} aria-label="Invitación enviada" />
       </td>
       <td><Cell value={g.notes ?? ''} onSave={(v) => onUpdate({ notes: v.trim() || null })} /></td>
-      <td className="msg-cell" title={g.rsvp_message ?? ''}>{g.rsvp_message ?? <span className="muted">—</span>}</td>
       <td>
         <div className="row-actions">
           <button type="button" className="btn btn--tiny" onClick={() => void copy()}>{copied ? 'Copiado' : 'Copiar enlace'}</button>
