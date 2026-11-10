@@ -40,10 +40,10 @@ export default function Details({ config }: { config: WeddingConfig }) {
   return (
     <section className="section section--paper" id="detalles">
       <div className="section-inner section-inner--wide">
-        <h2 className="section-title reveal">Cuándo y dónde</h2>
+        <h2 className="section-title">Cuándo y dónde</h2>
         <div className={`venues ${places.length === 2 ? 'venues--two' : ''}`}>
           {places.map((p) => (
-            <article className="venue reveal" key={p.title}>
+            <article className="venue" key={p.title}>
               <div className="venue-medal">{p.icon}</div>
               <h3 className="venue-title">{p.title}</h3>
               {p.time && <p className="venue-time">{p.time}</p>}

@@ -33,6 +33,7 @@ export interface WeddingConfig {
   gift_message: string | null
   gift_registries: GiftRegistry[]
   bank_details: string | null
+  bank_clabe: string | null
   farewell_message: string | null
   farewell_photo_url: string | null
   updated_at?: string

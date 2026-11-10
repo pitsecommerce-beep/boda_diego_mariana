@@ -13,7 +13,7 @@ export default function Parents({ config }: { config: WeddingConfig }) {
 
   return (
     <section className="section section--cream" id="padres">
-      <div className="section-inner section-inner--parents reveal">
+      <div className="section-inner section-inner--parents">
         <p className="section-phrase">{config.parents_phrase}</p>
         <Ornament />
         <div className={`parents ${sides.length === 2 ? 'parents--two' : ''}`}>

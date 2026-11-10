@@ -27,9 +27,9 @@ export default function Countdown({ date }: { date: string }) {
   ]
 
   return (
-    <section className="section section--olive" id="cuenta">
-      <div className="section-inner reveal">
-        <p className="eyebrow eyebrow--light">{t.done ? 'Llegó el gran día' : 'Faltan'}</p>
+    <section className="section section--sand" id="cuenta">
+      <div className="section-inner">
+        <p className="eyebrow">{t.done ? 'Llegó el gran día' : 'Faltan'}</p>
         <div className="countdown">
           {units.map(([label, value]) => (
             <div className="countdown-unit" key={label}>
@@ -38,7 +38,7 @@ export default function Countdown({ date }: { date: string }) {
             </div>
           ))}
         </div>
-        <Ornament light />
+        <Ornament />
         <p className="countdown-date">{formatLongDate(date)}</p>
         <p className="countdown-time">{formatTime(date)} · hora del centro de México</p>
       </div>
