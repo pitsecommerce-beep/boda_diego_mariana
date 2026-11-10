@@ -294,7 +294,7 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 .hero .hero-date {
-  margin-top: 26px;
+  margin-top: clamp(40px, 7vh, 72px);
   font-family: var(--serif);
   font-size: clamp(1.6rem, 6.5vw, 2.5rem);
   font-weight: 300;
