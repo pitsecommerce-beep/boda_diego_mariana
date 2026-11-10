@@ -172,7 +172,11 @@ export default function ContentPage() {
             + Agregar mesa de regalos
           </button>
         </div>
-        {text('bank_details', 'Datos bancarios (opcional)', { area: true, placeholder: 'Banco · Titular · CLABE' })}
+        <p className="sub-title">Datos bancarios (opcional)</p>
+        <div className="grid-2">
+          {text('bank_clabe', 'CLABE', { placeholder: '012 345 678 901 234 567', hint: 'El botón “Copiar” de la invitación copia sólo este número.' })}
+          {text('bank_details', 'Otra información', { area: true, placeholder: 'Banco BBVA\nTitular: Diego …' })}
+        </div>
       </section>
 
       <section className="card">

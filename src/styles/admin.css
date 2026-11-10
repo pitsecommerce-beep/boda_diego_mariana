@@ -36,7 +36,7 @@
   transition: background 0.2s, color 0.2s;
 }
 .admin-nav a:hover { color: var(--ink); }
-.admin-nav a.is-active { background: var(--gold); color: var(--white); }
+.admin-nav a.is-active { background: var(--stone); color: var(--ink); }
 .admin-main { width: min(1280px, 100%); margin: 0 auto; padding: 28px 24px 120px; }
 
 @media (max-width: 860px) {
@@ -100,8 +100,8 @@
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .btn:disabled { opacity: 0.5; cursor: default; }
-.btn--primary { background: var(--gold); color: var(--white); }
-.btn--primary:hover:not(:disabled) { background: var(--gold-deep); }
+.btn--primary { background: var(--umber); color: var(--white); }
+.btn--primary:hover:not(:disabled) { background: var(--ink); }
 .btn--ghost { border-color: var(--gold-line); color: var(--ink); }
 .btn--ghost:hover:not(:disabled) { border-color: var(--gold); background: rgba(184, 149, 106, 0.08); }
 .btn--danger-ghost { border-color: #e0b4a8; color: #9a3f2e; }

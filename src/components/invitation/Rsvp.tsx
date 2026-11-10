@@ -1,20 +1,18 @@
 import { useState } from 'react'
-import type { PublicGuest, RsvpStatus, WeddingConfig } from '@/types'
+import type { PublicGuest, WeddingConfig } from '@/types'
 import { submitRsvp } from '@/lib/supabase'
 import Ornament from '@/components/ui/Ornament'
 
-type Answer = Exclude<RsvpStatus, 'pendiente'>
+type Answer = 'si' | 'no'
 
 const OPTIONS: { value: Answer; label: string }[] = [
   { value: 'si', label: 'Ahí estaré' },
   { value: 'no', label: 'No podré asistir' },
-  { value: 'quizas', label: 'No puedo confirmar aún' },
 ]
 
 const THANKS: Record<Answer, string> = {
   si: '¡Gracias! Nos hace muy felices que nos acompañes.',
   no: 'Gracias por avisarnos. Te tendremos presente ese día.',
-  quizas: 'Sin problema. Puedes volver a este enlace para confirmar más adelante.',
 }
 
 interface Props {
@@ -24,7 +22,7 @@ interface Props {
 }
 
 export default function Rsvp({ config, guest, slug }: Props) {
-  const initial = guest && guest.rsvp_status !== 'pendiente' ? guest.rsvp_status : null
+  const initial: Answer | null = guest?.rsvp_status === 'si' || guest?.rsvp_status === 'no' ? guest.rsvp_status : null
   const [choice, setChoice] = useState<Answer | null>(initial)
   const [count, setCount] = useState(guest?.attending_count || guest?.seats || 1)
   const [message, setMessage] = useState(guest?.rsvp_message ?? '')
@@ -48,7 +46,7 @@ export default function Rsvp({ config, guest, slug }: Props) {
 
   return (
     <section className="section section--cream" id="confirmacion">
-      <div className="section-inner reveal">
+      <div className="section-inner">
         <p className="eyebrow">Confirma tu asistencia</p>
         <h2 className="section-title">¿Nos acompañas?</h2>
         <Ornament />

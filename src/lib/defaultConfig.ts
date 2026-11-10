@@ -30,6 +30,7 @@ export const DEFAULT_CONFIG: WeddingConfig = {
   gift_message: null,
   gift_registries: [],
   bank_details: null,
+  bank_clabe: null,
   farewell_message: null,
   farewell_photo_url: null,
 }

@@ -8,7 +8,7 @@ export default function Farewell({ config }: { config: WeddingConfig }) {
     <section className="farewell" id="despedida">
       {photo ? <img className="hero-img" src={photo} alt="" loading="lazy" /> : <div className="hero-img hero-img--empty" />}
       <div className="hero-shade hero-shade--strong" />
-      <div className="farewell-content reveal">
+      <div className="farewell-content">
         <p className="farewell-text">
           {config.farewell_message || 'Gracias por ser parte de nuestra historia. Te esperamos para celebrar juntos.'}
         </p>

@@ -10,7 +10,7 @@ export default function Gallery({ photos }: { photos: string[] }) {
 
   useEffect(() => {
     if (paused || count < 2) return
-    const id = setTimeout(() => go(index + 1), 5000)
+    const id = setTimeout(() => go(index + 1), 3000)
     return () => clearTimeout(id)
   }, [index, paused, count, go])
 
@@ -18,12 +18,12 @@ export default function Gallery({ photos }: { photos: string[] }) {
 
   return (
     <section className="section section--paper section--flush" id="galeria">
-      <div className="reveal gallery-head">
+      <div className="gallery-head">
         <p className="eyebrow">Nuestra historia</p>
         <h2 className="section-title">Momentos</h2>
       </div>
       <div
-        className="carousel reveal"
+        className="carousel"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={(e) => { touchX.current = e.touches[0].clientX; setPaused(true) }}
