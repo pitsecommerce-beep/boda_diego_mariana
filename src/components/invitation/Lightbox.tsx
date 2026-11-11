@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { pauseSmoothScroll } from '@/lib/smoothScroll'
 
 interface Props {
   src: string
@@ -31,7 +32,9 @@ export default function Lightbox({ src, origin, onClose }: Props) {
     backdrop.current!.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 400, easing: 'ease' })
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    pauseSmoothScroll(true)
     return () => {
+      pauseSmoothScroll(false)
       origin.style.visibility = ''
       document.body.style.overflow = prev
     }

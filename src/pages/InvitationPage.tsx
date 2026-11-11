@@ -4,6 +4,7 @@ import '@/styles/invitation.css'
 import { useConfig } from '@/hooks/useConfig'
 import { useReveal } from '@/hooks/useReveal'
 import { getPublicGuest } from '@/lib/supabase'
+import { startSmoothScroll, stopSmoothScroll } from '@/lib/smoothScroll'
 import type { PublicGuest } from '@/types'
 import Loading from '@/components/ui/Loading'
 import Envelope from '@/components/invitation/Envelope'
@@ -40,6 +41,13 @@ export default function InvitationPage() {
   }, [config])
 
   useReveal(phase !== 'closed')
+
+  // Desplazamiento suave en cuanto la invitación queda abierta
+  useEffect(() => {
+    if (phase !== 'open') return
+    startSmoothScroll()
+    return stopSmoothScroll
+  }, [phase])
 
   if (!config || guest === undefined || !coverReady) return <Loading />
 
